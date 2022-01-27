@@ -1,0 +1,189 @@
+<meta charset="UTF-8">
+<Head>
+<title>Primeiro site</title>
+<Style type = "text/css">
+
+body {background-color:DeepPink;} 
+p {font-family:font-style:oblique;
+color: Maroon;
+}
+.main {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.titulo {
+
+	text-align: center;
+	text-shadow: 5px 5px 5px #FFFAFA;
+	font-size: 90px;
+	font-family:font-style:oblique;
+	padding: 15px;
+	width: 30vw;
+	margin: auto;
+	footer{
+	position:absolute;
+	bottom: 0;
+    background-color: blue;
+    color: #FFF;
+    width: 100%;
+    height: 100px;    
+    text-align: center;
+    line-height: 100px;
+	}
+}
+.box {
+  font-size: 18px;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  border-radius: 0.5em;
+  width: 30vw;
+  height: 30vw;
+  border-style: outset;
+  border-color: lightgrey;
+  border-width: 5px 5px 5px 5px;
+	
+}
+
+.button1 {
+		-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    border: 2px solid #FF00FF; /* Magenta */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 8px;
+
+}
+.button1:hover {
+    background-color: #FF00FF; /* Magenta */
+    color: white;
+   outline-style: dashed;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: DeepPink;
+    color: #FFFFFF;
+    width: 100%;   
+    text-align: center;
+}
+
+</Style>
+</Head>
+<h1 class="titulo">CRIPTO</h1> 
+
+<body>
+	<main class="main">
+		<p class="box">
+			<label>Apenas letras minúsculas, sem acento:</label><br><br>
+			<input name="cripto" placeholder="Digite aqui"/> 
+			<button class="button1" onclick="criptografar()" >CRIPTOGRAFAR! </button><br><br>
+			<label ID="labe1">Resultado</label>
+		<p>
+		<p class="box">
+			<label>Apenas letras minúsculas, sem acento:</label><br><br>
+			<input name="descripto" placeholder="Digite aqui"/>
+			<button class="button1" onclick="descriptografar()">DESCRIPTOGRAFAR! </button><br><br>
+			<label ID="labe12">Resultado</label>
+		<p>
+	</main>
+	<footer>
+		<h2>Stéfany.k</h2>
+		
+		<a>stefanyferreiradasilva2017@gmail.com</a><br>
+		<a href="https://github.com/fanyferreira22">GitHub</a><br>
+		<a href="https://linkedin.com/in/stéfany-karoline-b6739b230">linkedin</a><br>
+		<a href="https://www.facebook.com/profile.php?id=100028393369131">Facebook</a><br><br>
+		
+		<small>Copyright © 2022 </small>
+
+		
+    </footer>
+	
+</body>
+
+<script>
+
+	var input = document.querySelector('input[name="cripto"]');
+	input.focus();
+
+	
+	var listaSubstituicao = {
+	e:"enter",
+	i:"imes",
+	a:"ai",
+	o:"ober",
+	u:"ufat"
+	};  
+	
+	function criptografar(){
+	texto = input.value;
+	alteracaoLista = texto.replace(/e|i|a|o|u/g, function(item){
+		let it = listaSubstituicao[item];
+		let itemLista = it.replace(/(?:^|\s)\S/g, function(elemento) { return elemento; });
+		return itemLista;
+	});
+	var labe1= document.getElementById('labe1');
+
+    labe1.innerHTML  = alteracaoLista;
+	};
+	
+	
+	//saída: Lista de regras: enter imes ai ober ufat 
+
+	
+		// Descriptografando o  texto:
+		
+		
+	var input2 = document.querySelector('input[name="descripto"]');
+	
+
+	var listaSubstituicao2 = {
+	enter:"e",
+	imes:"i",
+	ai:"a",
+	ober:"o",
+	ufat:"u"
+	};  
+	
+	
+	function descriptografar (){
+	texto2 = input2.value;
+	console.log(texto2)
+	alteracaoLista2 = texto2.replace(/enter|imes|ai|ober|ufat/g, function(item){
+		let it = listaSubstituicao2[item];
+		let itemLista = it.replace(/(?:^|\s)\S/g, function(elemento) { return elemento; });
+		return itemLista;
+	});
+	var labe12= document.getElementById('labe12');
+
+    labe12.innerHTML  = alteracaoLista2;
+	};
+	
+	//saída: Lista de regras: enter	imes ai ober ufat 
+
+	
+	﻿/* Regras Codificador: 
+	"e" é convertido para "enter" 
+	"i" é convertido para "imes"
+	"a" é convertido para "ai"
+	"o" é convertido para "ober"
+	"u" é convertido para "ufat"
+	Apenas letras minúsculas
+	Não permite acentuação   
+	*/
+
+	/* Regras Decodificador: 
+	"enter" é convertido para "e" 
+	"imes" é convertido para "i"
+	"ai" é convertido para "a"
+	"ober" é convertido para "o"
+	"ufat" é convertido para "u"
+	Apenas letras minúsculas
+	Não permite acentuação     
+	*/
+</script>
